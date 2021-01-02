@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "frontSatmus"
+    }
+  },
+  "defaultProject": "frontSatmus",
+  "cli": {
+    "analytics": "e6446851-90c9-40f5-a5f1-2b6ed912ebbd"
+  }
 }
