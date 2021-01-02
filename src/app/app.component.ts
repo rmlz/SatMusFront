@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import 'bulma/css/bulma.css'
 
 @Component({
   selector: 'app-root',
