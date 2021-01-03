@@ -1,32 +1,78 @@
-<nav class="navbar" role="navigation" aria-label="main nav">
-    <div class="nav-brand">
-        <a class="navbar-item" href="/">
-        <img src="">
-        </a>
+<section class="hero is-info">
+    <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main nav">
+            <div class="container">
+                <div class="nav-brand">
+                    <a class="navbar-item" href="/">
+                    <img src="">
+                    </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="resposiveNavbar">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="resposiveNavbar" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item">Página Inicial</a>
+                        <a class="navbar-item">item 2</a>
+                        <a class="navbar-item">item 3</a>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="buttons">
+                            <a class="button">
+                                Cadastrar
+                            </a>
+                            <a class="button">
+                                Entrar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav> 
     </div>
-
-    <div id="navbar" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">Página Inicial</a>
-            <a class="navbar-item">item 2</a>
-            <a class="navbar-item">item 3</a>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <p class="title">Bem vindo ao SAT Music</p>
+            <span>Adicione abaixo a sua música favorita!</span>
         </div>
-        <div class="navbar-end">
+    </div>
+    <div class="hero-footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <label class="label">Nome da Música:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="What is love?">
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <label class="label">Cantor ou Banda:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Haddaway">
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <label class="label">Ano da música:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="1990">
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <label class="label">Álbum</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="What is love?">
+                    </div>
+                </div>
+            </div>
+            <span>Escolheu sua melhor música? Agride o botão abaixo!</span>
             <div class="buttons">
                 <a class="button">
-                    Cadastrar
-                </a>
-                <a class="button">
-                    Entrar
+                    Enviar!
                 </a>
             </div>
         </div>
     </div>
-</nav>
-<p class="has-text-primary">topbar works!</p>
+</section>
