@@ -1,1 +1,8 @@
-<p>music-table works!</p>
+<p class="title">Músicas adicionadas</p>
+
+<div class="columns" *ngFor="let music of musics">
+    <div class="column">{{music.name}}</div>
+    <div class="column">{{music.bandOrSinger}}</div>
+    <div class="column">{{music.album}}</div>
+    <div class="column">{{music.year}}</div>
+</div>
