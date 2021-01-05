@@ -45,34 +45,58 @@
                 <div class="column is-3">
                     <label class="label">Nome da Música:</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="What is love?">
+                        <input class="input" type="text" placeholder="What is love?" [(ngModel)]="music.name">
                     </div>
                 </div>
                 <div class="column is-3">
                     <label class="label">Cantor ou Banda:</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Haddaway">
+                        <input class="input" type="text" placeholder="Haddaway" [(ngModel)]="music.bandOrSinger">
                     </div>
                 </div>
                 <div class="column is-3">
                     <label class="label">Ano da música:</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="1990">
+                        <input class="input" type="text" placeholder="1990" [(ngModel)]="music.year">
                     </div>
                 </div>
                 <div class="column is-3">
                     <label class="label">Álbum</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="What is love?">
+                        <input class="input" type="text" placeholder="What is love?" [(ngModel)]="music.album">
                     </div>
                 </div>
             </div>
             <span>Escolheu sua melhor música? Agride o botão abaixo!</span>
             <div class="buttons">
-                <a class="button">
+                <a class="button" id="btnSendMusic" (click)="sendMusic()">
                     Enviar!
                 </a>
             </div>
         </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p class="title">Músicas adicionadas</p>
+        <hr>
+
+        <div class="columns has-text-centered">
+            <div class="column"><span class=title>Nome da Música</span></div>
+            <div class="column"><span class=title>Cantor ou Banda</span></div>
+            <div class="column"><span class=title>Ano da Música</span></div>
+            <div class="column"><span class=title>Álbum</span></div>
+            <div class="column"><span class="title">Editar</span></div>
+            <div class="column"><span class="title">Deletar</span></div>
+        </div>
+        <div class="columns has-text-centered" *ngFor="let music of musics">
+            <div class="column">{{music.name}}</div>
+            <div class="column">{{music.bandOrSinger}}</div>
+            <div class="column">{{music.year}}</div>
+            <div class="column">{{music.album}}</div>
+            <div class="column"><a>editar</a></div>
+            <div class="column" (click)="deleteMusic(music)"><a>deletar</a></div>
+        </div>
+        <hr>
     </div>
 </section>

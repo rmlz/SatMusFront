@@ -5,18 +5,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { MusicTableComponent } from './music-table/music-table.component';
-import {MusicsService} from '../app/musics.service';
+import { MusicsService} from '../app/musics.service';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
-    MusicTableComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [HttpClientModule, MusicsService],
