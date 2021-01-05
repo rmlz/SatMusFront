@@ -1,0 +1,32 @@
+<div class="hero-body">
+    <div class="container has-text-centered">
+        <p class="title">Bem vindo ao SAT Music</p>
+        <span>Por favor, coloque seu e-mail e senha para continuar!</span>
+        <div class="container">
+            <div class="column is-6 is-offset-3">
+                <div class="box">
+                    <form>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" placeholder="Seu email!" type="email" #mail>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="password" placeholder="Senha" #pass>
+                            </div>
+                        </div>
+                        <button (click)="logOn(mail.value, pass.value)" class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <p>
+                    <a href="">Cadastrar-se</a>
+                    · 
+                        
+                    <a href="">Esqueci minha senha</a>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</div>
