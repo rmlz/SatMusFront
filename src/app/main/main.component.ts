@@ -19,9 +19,26 @@ export class MainComponent implements OnInit {
   musics: Array<Music> = new Array();
   musicModel: Music = new Music();
 
+  editField: string;
+
   ngOnInit(): void {
     this.callApi()
   }
+
+  //Table update methods
+
+  updateList(id: number, property: string, event: any){
+    const editField = event.target.textContent
+    this.musics[id][property] = editField
+    console.log(editField)
+    this.updateMusic(id, this.musics[id])
+  }
+
+  changeValue(id: number, property: string, event:any){
+    this.editField = event.target.textContent
+  }
+  
+  //Music API methods
 
   sendMusic() {
     
@@ -57,4 +74,5 @@ export class MainComponent implements OnInit {
       err => {console.log("Não foi possível deletar os dados da música", err)}
     )
   }
+
 }

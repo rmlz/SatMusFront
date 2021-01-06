@@ -47,15 +47,29 @@
                     <div class="column"><span class="title has-text-black">Cantor ou Banda</span></div>
                     <div class="column"><span class="title has-text-black">Ano da Música</span></div>
                     <div class="column"><span class="title has-text-black">Álbum</span></div>
-                    <div class="column"><span class="title has-text-black">Editar</span></div>
                     <div class="column"><span class="title has-text-black">Deletar</span></div>
                 </div>
-                <div class="columns has-text-centered" *ngFor="let music of musics">
-                    <div class="column">{{music.name}}</div>
-                    <div class="column">{{music.bandOrSinger}}</div>
-                    <div class="column">{{music.year}}</div>
-                    <div class="column">{{music.album}}</div>
-                    <div class="column"><a>editar</a></div>
+                <div class="columns has-text-centered" *ngFor="let music of musics; let id = index">
+                    <div 
+                        class="column" 
+                        (keyup)="changeValue(id, 'name', $event)" 
+                        (blur)="updateList(id, 'name', $event)" 
+                        contenteditable="true">{{music.name}}</div>
+                    <div 
+                        class="column" 
+                        (keyup)="changeValue(id, 'bandOrSinger', $event)" 
+                        (blur)="updateList(id, 'bandOrSinger', $event)" 
+                        contenteditable="true">{{music.bandOrSinger}}</div>
+                    <div 
+                        class="column" 
+                        (keyup)="changeValue(id, 'year', $event)" 
+                        (blur)="updateList(id, 'year', $event)" 
+                        contenteditable="true">{{music.year}}</div>
+                    <div 
+                        class="column" 
+                        (keyup)="changeValue(id, 'album', $event)" 
+                        (blur)="updateList(id, 'album', $event)" 
+                        contenteditable="true">{{music.album}}</div>
                     <div class="column" (click)="deleteMusic(music)"><a>deletar</a></div>
                 </div>
             </div>
