@@ -14,17 +14,14 @@
             </div>
             <div id="resposiveNavbar" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">Página Inicial</a>
-                    <a class="navbar-item">item 2</a>
-                    <a class="navbar-item">item 3</a>
+                    <a class="navbar-item" *ngIf="isLoggedIn" routerLink="">SAT Music</a>
+                    <a class="navbar-item" *ngIf="!isLoggedIn" routerLink="/register">Cadastrar</a>
                 </div>
                 <div class="navbar-end">
                     <div class="buttons">
-                        <a class="button">
-                            Cadastrar
-                        </a>
-                        <a class="button">
-                            Entrar
+                        
+                        <a class="is-danger button" (click)="logOut()" *ngIf="isLoggedIn">
+                            Sair
                         </a>
                     </div>
                 </div>

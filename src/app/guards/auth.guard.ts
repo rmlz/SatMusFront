@@ -1,30 +1,38 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
+import { CanActivate, ActivatedRouteSnapshot, Router } from "@angular/router";
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+    isLogged: Boolean;
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean> | boolean {
-        console.log(localStorage['token'], 'token');
-        console.log("VALIDATE");
+     constructor(private router: Router, private authService: AuthService) { }
 
-        if (localStorage['token'] == undefined) {
-            this.router.navigate(['/login'])
+     canActivate(route: ActivatedRouteSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+        const requiresLogin = route.data.requiresLogin || false;
+        if (requiresLogin) {
+          if(this.authService.isAuthenticated()){
+              return true;
+          } else {
+              this.router.navigate(['/login'])
+          }
         }
-
-        console.log(localStorage['token'] != null);
-
-        if (localStorage['token'] != null) {
-            return true;
-        } else {
-            this.router.navigate(['/login']);
-        }
-
+      }
     }
 
-}
+    // canActivate(
+    //     route: ActivatedRouteSnapshot,
+    //     state: RouterStateSnapshot): boolean  | Observable<boolean> {
+    //         if (this.authService.isLoggedIn()) {
+    //             this.router.navigate([''])
+    //             return true
+    //         } else {
+    //             this.router.navigate(['/login'])
+    //             return true
+    //         }
+            
+            
+    //     }
+    // }

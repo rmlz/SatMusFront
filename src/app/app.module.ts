@@ -1,21 +1,31 @@
-import { AngularFireModule } from "angularfire2";
-import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuth, AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthGuard } from "@angular/fire/auth-guard"
+
+import { AppComponent } from './app.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RegisterComponent } from './register/register.component';
+import { MidbarComponent } from './midbar/midbar.component';
+import { LowbarComponent } from './lowbar/lowbar.component';
+import { MainComponent } from './main/main.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TopbarComponent } from './topbar/topbar.component';
+
 import { MusicsService} from '../app/musics.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component'
+
 import { AuthGuard } from "./guards/auth.guard";
-import { LoginService } from "./login.services";
-import { MidbarComponent } from './midbar/midbar.component';
-import { LowbarComponent } from './lowbar/lowbar.component';
-import { MainComponent } from './main/main.component';
+
+import { AuthService } from "./auth.service";
+
+
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCwrs-Qty8lb8sLhavq_ko_bP8-rh4g_xk",
@@ -33,18 +43,20 @@ export const firebaseConfig = {
     LoginComponent,
     MidbarComponent,
     LowbarComponent,
-    MainComponent
-
+    MainComponent,
+    NotFoundComponent,
+    RegisterComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig),
   ],
-  providers: [HttpClientModule, MusicsService, AuthGuard, LoginService, 
-    AngularFireModule, AngularFireAuth],
+  providers: [HttpClientModule, MusicsService, AuthGuard, AuthService, 
+    AngularFireModule, AngularFireAuth, AngularFireAuthModule, AngularFireAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

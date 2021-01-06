@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { Music } from '../domains/Music';
 import { MusicModel } from '../models/MusicModel';
 import { MusicsService } from '../musics.service';
@@ -10,12 +11,13 @@ import { MusicsService } from '../musics.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private musicsService: MusicsService) { }
+  public user$ = this.authService.user;
+
+  constructor(private musicsService: MusicsService, private authService: AuthService) {}
 
   music: MusicModel = new MusicModel();
   musics: Array<Music> = new Array();
   musicModel: Music = new Music();
-  isSendBtnClicked: Boolean;
 
   ngOnInit(): void {
     this.callApi()

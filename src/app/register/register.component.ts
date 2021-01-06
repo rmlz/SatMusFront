@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
-
+export class RegisterComponent implements OnInit {
   public form: FormGroup;
   public user$ = this.authService.user;
 
@@ -24,21 +23,15 @@ export class LoginComponent implements OnInit {
       });
     }
 
-  login() {
+  register() {
     const {email, password} = this.form.value;
-    this.authService.login(email, password)
+    this.authService.register(email, password)
     .subscribe(
-      success => this.router.navigate(['']),
+      success => this.router.navigate(['/']),
       error => console.log(error.message)
     )
    };
 
-  loginWithGoogle(){
-    this.authService.loginWithGoogle().subscribe(
-      success => this.router.navigate(['']),
-      error => console.log(error.message)
-    );
-  }
   ngOnInit(): void {
    
   }
