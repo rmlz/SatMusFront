@@ -27,7 +27,7 @@ a {
     color: rgb(06, 72, 116) !important;
 }
 
-.box {
+.box, .label, .table {
     color: rgb(06, 72, 116) !important;
 }
 

@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-3">
-                        <label class="label">Nome da Música:</label>
+                        <label class="label">Nome da Música</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="What is love?" [(ngModel)]="music.name">
                         </div>
@@ -40,39 +40,40 @@
             </div>
             <div class="container">
                 <hr>
-
-                <div class="columns has-text-centered">
-                    <div class="column"><span class="title has-text-black">Nome da Música</span></div>
-                    <div class="column"><span class="title has-text-black">Cantor ou Banda</span></div>
-                    <div class="column"><span class="title has-text-black">Ano da Música</span></div>
-                    <div class="column"><span class="title has-text-black">Álbum</span></div>
-                    <div class="column"><span class="title has-text-black">Deletar</span></div>
-                </div>
-                <div class="columns has-text-centered" *ngFor="let music of musics; let id = index">
-                    <div 
-                        class="column" 
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Nome da Música</th>
+                            <th>Cantor ou Banda</th>
+                            <th>Ano da Música</th>
+                            <th>Álbum</th>
+                            <th>Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr class="" *ngFor="let music of musics; let id = index">
+                    <td 
                         (keyup)="changeValue(id, 'name', $event)" 
                         (blur)="updateList(id, 'name', $event)" 
-                        contenteditable="true">{{music.name}}</div>
-                    <div 
-                        class="column" 
+                        contenteditable="true">{{music.name}}</td>
+                    <td  
                         (keyup)="changeValue(id, 'bandOrSinger', $event)" 
                         (blur)="updateList(id, 'bandOrSinger', $event)" 
-                        contenteditable="true">{{music.bandOrSinger}}</div>
-                    <div 
-                        class="column" 
+                        contenteditable="true">{{music.bandOrSinger}}</td>
+                    <td  
                         (keyup)="changeValue(id, 'year', $event)" 
                         (blur)="updateList(id, 'year', $event)" 
-                        contenteditable="true">{{music.year}}</div>
-                    <div 
-                        class="column" 
+                        contenteditable="true">{{music.year}}</td>
+                    <td  
                         (keyup)="changeValue(id, 'album', $event)" 
                         (blur)="updateList(id, 'album', $event)" 
-                        contenteditable="true">{{music.album}}</div>
-                    <div class="column" (click)="deleteMusic(music)"><a>deletar</a></div>
-                </div>
-            </div>
+                        contenteditable="true">{{music.album}}</td>
+                    <td class="column" (click)="deleteMusic(music)"><a><i class="fas fa-trash-alt"></i></a></td>
+                </tbody>
+            </table>
             <hr>
+        </div>
         </div>
     </div>
 </section>
