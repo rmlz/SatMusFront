@@ -6,23 +6,22 @@
                 <img src="">
                 </a>
 
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="resposiveNavbar">
+                <a role="button" (click)="onClickNavBurguer()" [ngClass]="burguerStatus ? 'is-active' : 'is-not-active'" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="resposiveNavbar">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="resposiveNavbar" class="navbar-menu">
+            <div id="resposiveNavbar" class="navbar-menu" [ngClass]="burguerStatus ? 'is-active' : 'is-not-active'">
                 <div class="navbar-start">
-                    <a class="navbar-item" *ngIf="isLoggedIn" routerLink="">SAT Music</a>
                     <a class="navbar-item" *ngIf="!isLoggedIn" routerLink="/login">Entrar</a>
                     <a class="navbar-item" *ngIf="!isLoggedIn" routerLink="/register">Cadastrar</a>
                 </div>
                 <div class="navbar-end">
                     <div class="buttons">
                         
-                        <a class="is-danger button" (click)="logOut()" *ngIf="isLoggedIn">
-                            Sair
+                        <a class="is-sat-secondary button" (click)="logOut()" *ngIf="isLoggedIn">
+                            <i class="fas fa-sign-out-alt"></i> Sair do Aplicativo
                         </a>
                     </div>
                 </div>

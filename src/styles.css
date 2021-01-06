@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+.hero.is-info {
+    background-color: rgb(06, 72, 116) !important;
+    color: #fff;
+}
+
+.navbar-item, .navbar-link {
+    color: rgba(255, 255, 255, 1) !important;
+}
+.navbar-item:hover, .navbar-link:hover{
+    background-color: rgb(39, 181, 122) !important;
+    color: rgb(06, 72, 116) !important;
+}
+
+.navbar-burger {
+    background-color: rgb(255 255 255) !important;
+}
+
+.navbar-burger:hover {
+    background-color:rgb(39, 181, 122) !important;
+}
+
+.navbar-item:focus, .navbar-link:focus{
+    background-color: rgb(39, 181, 122) !important;
+}
+
+a {
+    color: rgb(06, 72, 116) !important;
+}
+
+.box {
+    color: rgb(06, 72, 116) !important;
+}
+
+.has-text-blue-sat {
+    color: rgb(06, 72, 116) !important; 
+}
+
+.is-sat-primary {
+    background-color: rgb(06, 72, 116) !important;
+    color: white !important;
+}
+
+.is-sat-secondary {
+    background-color: rgb(39, 181, 122) !important;
+    color: black !important;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1023px) {
+    .hero.is-info .navbar-menu {
+        background-color: white !important;
+    }
+}

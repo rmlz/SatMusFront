@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class TopbarComponent implements OnInit {
 
   public isLoggedIn: Boolean;
+  public burguerStatus:Boolean = false;
 
   constructor(
     private router: Router,
@@ -30,7 +31,10 @@ export class TopbarComponent implements OnInit {
       success => this.router.navigate(['/login']),
       error => alert(error))
   }
-
+  
+  onClickNavBurguer(){
+    this.burguerStatus = !this.burguerStatus
+  }
 
 
 }
