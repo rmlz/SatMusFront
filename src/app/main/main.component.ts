@@ -1,4 +1,7 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { PatternValidator } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Music } from '../domains/Music';
 import { MusicModel } from '../models/MusicModel';
@@ -12,6 +15,7 @@ import { MusicsService } from '../musics.service';
 export class MainComponent implements OnInit {
 
   public user$ = this.authService.user;
+  public submitErrors: Array<string> = []
 
   constructor(private musicsService: MusicsService, private authService: AuthService) {}
 
@@ -40,15 +44,75 @@ export class MainComponent implements OnInit {
   
   //Music API methods
 
+  musicErrorTreatment(){
+    let keyName: string;
+    let canSubmit: boolean = true;
+    let yearRegex: RegExp = /^\d{4}$/
+
+    //checks if Music object is empty
+    if (Object.keys(this.music).length < 4){
+      this.submitErrors.push('Sua MELHOR MÚSICA tem que ter todos os campos preenchidos mano! 😁')
+      canSubmit = false;
+      console.log(this.submitErrors)
+    }
+    // checks values inside each key of Music Object
+    Object.keys(this.music)
+     .forEach((key) => {
+         switch(key) {
+           case 'name':
+             keyName = 'Nome da Música';
+             break;
+
+            case 'bandOrSinger':
+              keyName = 'Cantor ou Banda';
+              break;
+
+            case 'year':
+              keyName = 'Ano da Música';
+              break;
+
+            case 'album':
+              keyName = 'Álbum';
+              break;
+         }
+         
+         // checks if text > 15
+         if (this.music[key].length > 30 && key != 'year'){
+           this.submitErrors.push(`O campo ${keyName} não pode conter mais de 30 caracteres! Tu quer quebrar minha tela cara?😤`);
+           this.music[key] = ''
+           canSubmit = false;
+         }
+
+         if (key == 'year' && !this.music[key].toString().match(yearRegex)) {
+          this.submitErrors.push(`O campo ${keyName} precisa estar no padrão YYYY 😒`);
+          this.music[key] = 0
+          canSubmit = false;
+         }
+      })
+
+      if (canSubmit) {
+        this.submitErrors.push('SUCESSO!! OLHA A SUA MÚSICA NA NOSSA LISTA!💖')
+        setTimeout(() => {
+          this.submitErrors.length = 0
+        },3000)
+      }
+
+      return canSubmit
+  }
+
   sendMusic() {
+    this.submitErrors.length = 0
+    if(this.musicErrorTreatment()){
+      //console.log(this.music)
+      this.musicsService.sendMusic(this.music).subscribe(music => {
+        this.callApi()
+      }, err => {
+        console.log('Erro ao cadastrar música', err)
+      })
+      this.music = new MusicModel()
+    }
     
-    console.log(this.music)
-    this.musicsService.sendMusic(this.music).subscribe(music => {
-      this.callApi()
-    }, err => {
-      console.log('Erro ao cadastrar música', err)
-    })
-    this.music = new MusicModel()
+    
   }
 
   callApi(){

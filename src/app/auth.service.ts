@@ -29,8 +29,12 @@ export class AuthService {
     return from(this.afAuth.signOut())
   }
 
-  register(email, password){
+  register(email: string, password: string): Observable<any>{
     return from(this.afAuth.createUserWithEmailAndPassword(email,password))
+  }
+
+  forgotPass(email: string): Observable<any>{
+    return from(this.afAuth.sendPasswordResetEmail(email))
   }
 
   isAuthenticated(): Observable<boolean> {

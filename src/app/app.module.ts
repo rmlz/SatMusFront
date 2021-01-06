@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component'
 import { AuthGuard } from "./guards/auth.guard";
 
 import { AuthService } from "./auth.service";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -46,6 +47,7 @@ export const firebaseConfig = {
     MainComponent,
     NotFoundComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),

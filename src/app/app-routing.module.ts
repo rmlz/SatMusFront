@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login'])
 const redirectLoggedInToMain = () => redirectLoggedInTo([''])
@@ -16,9 +17,12 @@ const routes: Routes = [  {
   path: 'login', component: LoginComponent,
 },
 { path: 'register', component: RegisterComponent, data: { authGuardPipe: redirectLoggedInToMain }, canActivate: [AngularFireAuthGuard]},
+{ path: 'resetpassword', component: ForgotPasswordComponent, data: { authGuardPipe: redirectLoggedInToMain }, canActivate: [AngularFireAuthGuard]},
 { path: '**', component: NotFoundComponent
 },
 ];
+
+
 
 
 @NgModule({
